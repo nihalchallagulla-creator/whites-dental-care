@@ -1,0 +1,6 @@
+{
+  "name": "Whites Dental Care",
+  "description": "Premium modern dental clinic in Kondapur, Hyderabad. Personalized dental care, advanced dentistry, and comfortable patient experience.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
