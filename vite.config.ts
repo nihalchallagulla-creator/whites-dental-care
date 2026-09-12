@@ -1,11 +1,26 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import fs from 'fs';
 import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    plugins: [react(), tailwindcss()],
+    base: process.env.BASE_URL || '/whites-dental-care/',
+    plugins: [
+      react(),
+      tailwindcss(),
+      {
+        name: 'vite-plugin-github-pages-404',
+        closeBundle() {
+          const distIndex = path.resolve(__dirname, 'dist/index.html');
+          const dist404 = path.resolve(__dirname, 'dist/404.html');
+          if (fs.existsSync(distIndex)) {
+            fs.copyFileSync(distIndex, dist404);
+          }
+        },
+      },
+    ],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
